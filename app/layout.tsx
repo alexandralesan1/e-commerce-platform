@@ -22,9 +22,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  // const store = prismadb.store.
   return (
     <ClerkProvider>
       <html lang="en">
