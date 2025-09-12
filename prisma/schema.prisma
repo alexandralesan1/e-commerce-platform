@@ -21,6 +21,7 @@ id          String        @id @default(uuid())
 name        String
 userId      String
 billboards  Billboard[]   @relation("StoreToBillboard")
+sizes       Size[]        @relation("StoreToSize")
 categories  Category[]    @relation("StoreToCategory")
 createdAt   DateTime      @default(now())
 updatedAt   DateTime      @updatedAt
@@ -55,4 +56,16 @@ updatedAt   DateTime      @updatedAt
 
 @@index([storeId])
 @@index([billboardId])
+}
+
+
+model Size {
+id          String        @id @default(uuid())
+storeId     String
+store       Store         @relation("StoreToSize", fields: [storeId], references: [id])
+name        String
+value       String
+createdAt   DateTime      @default(now())
+updatedAt   DateTime      @updatedAt
+@@index([storeId])
 }
